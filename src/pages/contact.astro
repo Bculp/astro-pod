@@ -1,0 +1,83 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <h1>Contact Us</h1>
+    <div>
+      <div>
+        <h2>Message Us</h2>
+        <p>If you would prefer to call us, our number is 800-123-4567.</p>
+        <form id="contact">
+          <div class="form-field">
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" id="firstName" required />
+          </div>
+          <div class="form-field">
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" id="lastName" required />
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required />
+          </div>
+          <div class="form-field">
+            <label for="comments">Comments</label>
+            <textarea
+              form="contact"
+              name="comments"
+              id="comments"
+              rows="8"
+              cols="24"
+              required></textarea>
+          </div>
+          <div class="form-field">
+            <input type="submit" value="Submit" id="submit" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const form = document.getElementById("contact");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    // @ts-ignore
+    const formData = new FormData(form);
+    console.log(formData);
+  });
+</script>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  .form-field > label {
+    margin-right: 16px;
+  }
+
+  #email {
+    margin-left: 48px;
+  }
+
+  #comments {
+    margin-left: -1px;
+  }
+</style>
